@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Zomato-JavaScript</title>
+  </head>
+  <body>
+    <div id="main-container"></div>
+    <div id="card-list"></div>
+  </body>
+</html>
+<script>
+  const objContainer = [
+    {
+      image:
+        "https://b.zmtcdn.com/data/dish_photos/bb0/3128b6cabbd03db353cd0909cccb4bb0.jpg?output-format=webp",
+      title: "Marrakesh",
+      description: "Lebanese, North Indian, Mughlai, Biryani, Rolls, Desserts",
+      price: "₹200 for one",
+      rating: "3.9",
+      offer1: "Pro extra 25% OFF",
+      offer2: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/1/10571/c0ba9ec0f08684316b2552a8eb5a1ea8_o2_featured_v2.jpg?output-format=webp",
+      title: "McDonald's",
+      description: "Burger, Fast Food, Beverages, Coffee, Desserts",
+      price: "₹150 for one",
+      rating: "4.2",
+      offer1: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/3/19339153/f0b82b186fdc3cafc7305b8b11730b9f_o2_featured_v2.jpg?output-format=webp",
+      title: "Circle Of Crust",
+      description: "Pizza, Fast Food",
+      price: "₹150 for one",
+      rating: "4.0",
+      offer1: "50% OFF up to 100",
+      offer2: "32 min",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/9/6503729/53540bd38a2a946f3d79609de962dc8b_o2_featured_v2.jpg?output-format=webp",
+      title: "Starbucks Coffee",
+      description: "Beverages, Desserts",
+      price: "₹150 for one",
+      rating: "4.2",
+      offer1: "Pro extra 10% OFF",
+      offer2: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/1/19284481/e97e6b0d2616646c412efae4b6641cc6_o2_featured_v2.jpg?output-format=webp",
+      title: "Hyderabadi Biryani Express",
+      description: "Biryani, North Indian, Mughlai, Kebab",
+      price: "₹150 for one",
+      rating: "3.4",
+      offer1: "Pro extra 15% OFF",
+      offer2: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/3/10503/c708fcdb888abd4f493c0fdc67ac766e_o2_featured_v2.jpg?output-format=webp",
+      title: "Pizza Hut",
+      description: "Pizza, Fast Food, Desserts, Beverages",
+      price: "₹150 for one",
+      rating: "3.7",
+      offer1: "50% OFF up to 100",
+      offer2: "23 min",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/7/18531977/bea76bff86cb01a53f200457a52f20bd_o2_featured_v2.jpg",
+      title: "Momo's Corrner",
+      description: "Momos, Beverages",
+      price: "₹100 for one",
+      rating: "4.2",
+      offer1: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/4/10624/18948bbc7010759a363d74acb43454d9_o2_featured_v2.jpg",
+      title: "KFC",
+      description: "Burger, Fast Food, Biryani, Desserts, Beverages",
+      price: "₹100 for one",
+      rating: "3.6",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/chains/3/18315713/d641278933a1a34f11599c9aaa4008b4_o2_featured_v2.jpg",
+      title: "Crazy Cheesy",
+      description: "Fast Food, Pizza, Sandwich, Beverages, Desserts",
+      price: "₹250 for one",
+      rating: "4.0",
+      offer1: "50% OFF up to 100",
+      inCart: 0,
+    },
+    {
+      image:
+        "https://b.zmtcdn.com/data/pictures/6/19026766/9af517c6eb7189db0ba23961881ad59d_o2_featured_v2.jpg",
+      title: "Joshi Wadewale",
+      description: "Street Food, South Indian, Mithai, Beverages,marathi",
+      price: "₹250 for one",
+      rating: "4.0",
+      offer1: "50% OFF up to 100",
+      inCart: 0,
+    },
+  ];
+
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------------------
+
+  const Maincontainer = document.getElementById("main-container");
+
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------------------
+
+  //nav bar
+
+  const navBar = document.createElement("div");
+  navBar.className = "nav-bar";
+
+  const navBarCart1 = document.createElement("div");
+  navBarCart1.className = "nav-bar-cart1";
+
+  const navBarP = document.createElement("img");
+  navBarP.className = "images-tag";
+  navBarP.src =
+    "https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png";
+  navBarCart1.appendChild(navBarP);
+  navBar.appendChild(navBarCart1);
+  const navBarCart2 = document.createElement("div");
+  navBarCart2.className = "nav-bar-cart2";
+
+  const cartBtn = document.createElement("button");
+  cartBtn.textContent = "Cart";
+  cartBtn.src = "https://www.google.com/";
+
+  navBarCart2.appendChild(cartBtn);
+  navBar.appendChild(navBarCart2);
+
+  Maincontainer.appendChild(navBar);
+
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------------------
+
+  const mainCard = document.createElement("div");
+  mainCard.className = "container";
+  for (let i = 0; i < objContainer.length; i++) {
+    const items = document.createElement("div");
+    items.className = "items";
+
+    items.addEventListener("click", function () {
+      console.log("@SN items", items);
+    });
+
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------------------------
+
+    // cart-images
+
+    const carts = document.createElement("div");
+    carts.className = "cart";
+
+    const images = document.createElement("img");
+    images.src = objContainer[i].image;
+
+    carts.appendChild(images);
+    items.appendChild(carts);
+
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
+
+    //text on cart
+
+    const textOnPhoto = document.createElement("div");
+    textOnPhoto.className = "text-on-cart";
+
+    const tagP = document.createElement("p");
+    tagP.className = "min";
+    tagP.textContent = objContainer[i].offer1;
+    textOnPhoto.appendChild(tagP);
+
+    const tagPs = document.createElement("p");
+    tagPs.className = "max";
+    tagPs.textContent = objContainer[i].offer2;
+    textOnPhoto.appendChild(tagPs);
+
+    items.appendChild(textOnPhoto);
+
+    // -------------------------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------------------------------
+
+    //content
+
+    const mainContent = document.createElement("div");
+    mainContent.className = "content";
+
+    const Content = document.createElement("div");
+    Content.className = "content-first";
+
+    const headingCon = document.createElement("h4");
+    headingCon.textContent = objContainer[i].title;
+
+    Content.appendChild(headingCon);
+    mainContent.appendChild(Content);
+
+    const Content2 = document.createElement("div");
+    Content2.className = "content-second";
+
+    const headingCon2 = document.createElement("p");
+    headingCon2.textContent = objContainer[i].rating;
+
+    const headingSpan = document.createElement("span");
+    headingSpan.className = "material-symbols-outlined";
+    headingSpan.textContent = "star";
+
+    Content2.appendChild(headingCon2);
+    Content2.appendChild(headingSpan);
+    mainContent.appendChild(Content2);
+    items.appendChild(mainContent);
+
+    // ---------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+
+    const contentData = document.createElement("div");
+    contentData.className = "data";
+
+    const tagp1 = document.createElement("p");
+    tagp1.textContent = objContainer[i].description;
+
+    contentData.appendChild(tagp1);
+
+    const tagp2 = document.createElement("p");
+    tagp2.textContent = objContainer[i].price;
+
+    contentData.appendChild(tagp2);
+    items.appendChild(contentData);
+
+    // ---------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+
+    const lineTag = document.createElement("div");
+    lineTag.className = "line";
+
+    items.appendChild(lineTag);
+
+    // ---------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
+
+    mainCard.appendChild(items);
+    Maincontainer.appendChild(mainCard);
+  }
+  const cartListContainer = document.getElementById("card-list");
+  for (let i = 0; i < objContainer.length; i++) {
+    const title = document.createElement("p");
+    title.className = "content-first";
+    title.innerText = objContainer[i].title;
+    const imageOn = document.createElement("img");
+    imageOn.className = "cart";
+    imageOn.src = objContainer[i].image;
+    const quantity = document.createElement("p");
+    quantity.className = "content-first";
+    quantity.innerText = objContainer[i].inCart;
+
+    const cardBar = document.createElement("div");
+
+    const incrementBtn = document.createElement("button");
+    incrementBtn.innerText = "Increment";
+    incrementBtn.addEventListener("click", function () {
+      objContainer[i].inCart = objContainer[i].inCart + 1;
+      quantity.innerText = objContainer[i].inCart;
+    });
+
+    const decrementBtn = document.createElement("button");
+    decrementBtn.innerText = "Decrement";
+    decrementBtn.addEventListener("click", function () {
+      objContainer[i].inCart = objContainer[i].inCart - 1;
+      quantity.innerText = objContainer[i].inCart;
+    });
+
+    cardBar.appendChild(incrementBtn);
+    cardBar.appendChild(decrementBtn);
+    cardBar.appendChild(title);
+    cardBar.appendChild(imageOn);
+    cardBar.appendChild(quantity);
+    cartListContainer.appendChild(cardBar);
+  }
+</script>
